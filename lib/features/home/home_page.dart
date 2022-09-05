@@ -18,18 +18,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tadek niejadek'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const UserProfile(),
-                ),
-              );
-            },
-            icon: const Icon(Icons.person),
-          ),
-        ],
       ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
