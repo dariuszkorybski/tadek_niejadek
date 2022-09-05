@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,42 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDPXQwaIudzOvr1dg-fbliEjhAaduWJUls',
-    appId: '1:231970697447:web:3dc5b809eb177fcba47242',
-    messagingSenderId: '231970697447',
-    projectId: 'nakarm-bobasa',
-    authDomain: 'nakarm-bobasa.firebaseapp.com',
-    storageBucket: 'nakarm-bobasa.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB_Fn0uju4Q-2_q-NOndKoYlXbXi_Xk-Q8',
-    appId: '1:231970697447:android:6900f5759365fc36a47242',
+    appId: '1:231970697447:android:cfc9aa68282d8817a47242',
     messagingSenderId: '231970697447',
     projectId: 'nakarm-bobasa',
     storageBucket: 'nakarm-bobasa.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC_9XUE-6-fcUXCFPhEE3cSfPRWNitpYBQ',
-    appId: '1:231970697447:ios:6c22f9eab965ad83a47242',
-    messagingSenderId: '231970697447',
-    projectId: 'nakarm-bobasa',
-    storageBucket: 'nakarm-bobasa.appspot.com',
-    iosClientId:
-        '231970697447-ssos11t52h2mpqltfcv643d3o7o21jdg.apps.googleusercontent.com',
-    iosBundleId: 'com.dariuszkorybski.tadekNiejadek',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC_9XUE-6-fcUXCFPhEE3cSfPRWNitpYBQ',
-    appId: '1:231970697447:ios:6c22f9eab965ad83a47242',
-    messagingSenderId: '231970697447',
-    projectId: 'nakarm-bobasa',
-    storageBucket: 'nakarm-bobasa.appspot.com',
-    iosClientId:
-        '231970697447-ssos11t52h2mpqltfcv643d3o7o21jdg.apps.googleusercontent.com',
-    iosBundleId: 'com.dariuszkorybski.tadekNiejadek',
   );
 }

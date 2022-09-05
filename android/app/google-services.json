@@ -43,6 +43,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:231970697447:android:cfc9aa68282d8817a47242",
+        "android_client_info": {
+          "package_name": "com.dariuszkorybski.tadek_niejadek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Fn0uju4Q-2_q-NOndKoYlXbXi_Xk-Q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "231970697447-27petqfsdsa0qhui0ch8uaa38ca5fm4l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dariuszkorybski.dzieckoJe"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:231970697447:android:5d66bbf977d53ab2a47242",
         "android_client_info": {
           "package_name": "com.dariuszkorybski.dziecko_je"
