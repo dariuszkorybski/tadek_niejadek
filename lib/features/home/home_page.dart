@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tadek niejadek'),
+        title: const Center(child: Text('Tadek niejadek')),
       ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
@@ -28,34 +28,37 @@ class _HomePageState extends State<HomePage> {
         if (currentIndex == 1) {
           return const UserProfile();
         }
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            BottomNavigationBar(
-              currentIndex: currentIndex,
-              onTap: (newIndex) {
-                setState(() {
-                  currentIndex = newIndex;
-                });
-              },
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.add),
-                  label: 'Dodaj dziecko',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Moje konto',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.child_friendly),
-                  label: 'Dzieci',
-                ),
-              ],
-            ),
-          ],
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: const [
+              Text('pusto'),
+            ],
+          ),
         );
       }),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (newIndex) {
+          setState(() {
+            currentIndex = newIndex;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Dodaj dziecko',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Moje konto',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.child_friendly),
+            label: 'Dzieci',
+          ),
+        ],
+      ),
     );
   }
 }
