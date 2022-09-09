@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tadek_niejadek/features/adding/adding_child_page.dart';
 import 'package:tadek_niejadek/features/pages/user_profile.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,9 +22,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
-          return const Center(
-            child: Text('Jeden'),
-          );
+          return const AddingChildPage();
         }
         if (currentIndex == 1) {
           return const UserProfile();
@@ -62,3 +61,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
