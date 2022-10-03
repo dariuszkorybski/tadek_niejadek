@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 part 'adding_state.dart';
 
 class AddingCubit extends Cubit<AddingState> {
-  AddingCubit() : super( AddingState(),);
+  AddingCubit() : super( const AddingState(),);
 
   Future<void> add(
    String name,
@@ -27,7 +27,7 @@ class AddingCubit extends Cubit<AddingState> {
         'photo' : imageUrl
 
       });
-      emit( AddingState(saved: true));
+      emit( const AddingState(saved: true));
     } catch (error) {
       emit (AddingState( errorMessage: error.toString()));
     }

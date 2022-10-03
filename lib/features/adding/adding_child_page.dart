@@ -45,17 +45,26 @@ class _AddingChildPageState extends State<AddingChildPage> {
                 title: const Text('Dodaj dziecko'),
                 actions: [
                   IconButton(
-                      onPressed: () {
-                        context.read<AddingCubit>().add(
-                              _name!,
-                              _dateTime!,
-                              _height!,
-                              _weight!,
-                              _gender!,
-                              _imageUrl!,
-                            );
-                      },
-                      icon: const Icon(Icons.add))
+                    onPressed: () {
+                      context.read<AddingCubit>().add(
+                            _name!,
+                            _dateTime!,
+                            _height!,
+                            _weight!,
+                            _gender!,
+                            _imageUrl!,
+                          );
+                    },
+                    icon: const Icon(Icons.add),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(
+                      (Icons.back_hand),
+                    ),
+                  )
                 ],
               ),
               body: _AddChildBody(
@@ -133,44 +142,47 @@ class _AddChildBody extends StatelessWidget {
           onChanged: onNameChanged,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Podaj imię',
+            hintText: 'Podaj imię dziecka',
             label: Text('Imię'),
           ),
         ),
+        const SizedBox(height: 10),
+        TextField(
+          onChanged: onGenderChanged,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Kobieta/Męzczyzna [K/M]',
+            label: Text('Płeć'),
+          ),
+        ),
+        const SizedBox(height: 10),
         TextField(
           onChanged: onHeightChanged,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Podaj wzrost',
-            label: Text('Wzrost'),
+            hintText: 'Podaj wzrost dziecka',
+            label: Text('Wzrost [cm]'),
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         TextField(
           onChanged: onWeightChanged,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Podaj wagę dziecka',
+            label: Text('Waga [kg]'),
+          ),
+        ),
+        const SizedBox(height: 10),
+        TextField(
+          onChanged: onImageUrlChanged,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             hintText: 'http:// ... .jpg',
             label: Text('Image URL'),
           ),
         ),
-        TextField(
-          onChanged: onGenderChanged,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Matrix 5',
-            label: Text('Title'),
-          ),
-        ),
-        TextField(
-          onChanged: onImageUrlChanged,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Matrix 5',
-            label: Text('Title'),
-          ),
-        ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () async {
             final selectedDate = await showDatePicker(
