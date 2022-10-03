@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadek_niejadek/features/adding/adding_child_page.dart';
-import 'package:tadek_niejadek/features/details/page/details_page.dart';
-import 'package:tadek_niejadek/features/game/game_first_page/game_first_page.dart';
-import 'package:tadek_niejadek/features/home/cubit/home_page_cubit.dart';
+import 'package:tadek_niejadek/app/features/adding/adding_child_page.dart';
+import 'package:tadek_niejadek/app/features/details/page/details_page.dart';
+import 'package:tadek_niejadek/app/features/game/game_first_page/game_first_page.dart';
+import 'package:tadek_niejadek/app/features/home/cubit/home_page_cubit.dart';
+
 
 import 'package:tadek_niejadek/models/child_model.dart';
 

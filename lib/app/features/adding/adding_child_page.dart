@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:tadek_niejadek/features/adding/cubit/adding_cubit.dart';
+import 'package:tadek_niejadek/app/features/adding/cubit/adding_cubit.dart';
+
+
+
 
 class AddingChildPage extends StatefulWidget {
   const AddingChildPage({

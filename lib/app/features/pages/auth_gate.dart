@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var errorMessage = '';
   var isCreatingAccount = false;
   @override
   Widget build(BuildContext context) {
@@ -80,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     }
                   }
-                  ;
+                  
                 },
                 child: Text(isCreatingAccount == true
                     ? 'Zarejestruj się'

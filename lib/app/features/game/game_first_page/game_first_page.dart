@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tadek_niejadek/features/game/game_second_page/game_second_page.dart';
+import 'package:tadek_niejadek/app/features/game/game_second_page/game_second_page.dart';
+
 
 class GameFirstPage extends StatelessWidget {
   const GameFirstPage({
