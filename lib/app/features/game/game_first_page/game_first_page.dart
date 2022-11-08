@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tadek_niejadek/app/features/game/game_second_page/game_second_page.dart';
-
+import 'package:tadek_niejadek/app/features/home/child/child_list.dart';
 
 class GameFirstPage extends StatelessWidget {
   const GameFirstPage({
@@ -11,7 +9,7 @@ class GameFirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.green,
       body: Center(
         child: Column(
@@ -34,7 +32,7 @@ class GameFirstPage extends StatelessWidget {
                 child: const Text('Sprawdź :)'),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const GameSecondPage(),
+                    builder: (_) => const ChildList(),
                   ));
                 }),
             const SizedBox(

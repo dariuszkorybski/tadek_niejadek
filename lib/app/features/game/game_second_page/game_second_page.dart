@@ -33,7 +33,8 @@ class GameSecondPage extends StatelessWidget {
                 ),
               ),
             ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                style:
+                    ElevatedButton.styleFrom(backgroundColor: Colors.blueGrey),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },

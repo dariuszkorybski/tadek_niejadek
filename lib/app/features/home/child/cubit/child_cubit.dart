@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
 import 'package:tadek_niejadek/models/child_model.dart';
 
-part 'home_page_state.dart';
+part 'child_state.dart';
 
-class HomePageCubit extends Cubit<HomePageState> {
-  HomePageCubit() : super(const HomePageState());
+class ChildCubit extends Cubit<ChildState> {
+  ChildCubit() : super(const ChildState());
 
   StreamSubscription? _streamSubscription;
 
@@ -16,19 +15,19 @@ class HomePageCubit extends Cubit<HomePageState> {
     _streamSubscription =
         FirebaseFirestore.instance.collection('child').snapshots().listen(
       (child) {
-              final childModels = child.docs.map((doc) {
-                return ChildModel(
-                    id: doc.id,
-                    name: doc['name'],
-                    gender: doc['gender'],
-                    height: doc['height'],
-                    weight: doc['weight'],
-                    imageUrl: doc['imageUrl'],
-                    dateTime: doc['dateTime']);
-              }).toList();
-              emit(HomePageState(child: childModels));
-            },
-          );
+        final childModels = child.docs.map((doc) {
+          return ChildModel(
+              id: doc.id,
+              name: doc['name'],
+              gender: doc['gender'],
+              height: doc['height'],
+              weight: doc['weight'],
+              imageUrl: doc['imageUrl'],
+              dateTime: doc['dateTime']);
+        }).toList();
+        emit(ChildState(child: childModels));
+      },
+    );
   }
 
   Future<void> remove({required String documentID}) async {
@@ -39,7 +38,7 @@ class HomePageCubit extends Cubit<HomePageState> {
           .delete();
     } catch (error) {
       emit(
-        const HomePageState(removingErrorOccured: true),
+        const ChildState(removingErrorOccured: true),
       );
       start();
     }

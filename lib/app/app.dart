@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadek_niejadek/app/cubit/auth_cubit.dart';
 import 'package:tadek_niejadek/app/features/home/home_page.dart';
-import 'package:tadek_niejadek/app/features/pages/auth_gate.dart';
-
+import 'package:tadek_niejadek/app/features/login/auth_gate.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -24,14 +24,17 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          final user = snapshot.data;
+    return BlocProvider(
+      create: (context) => AuthCubit()..start(),
+      child: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          final user = state.user;
           if (user == null) {
             return LoginPage();
           }
-          return const HomePage();
-        });
+          return  HomePage(user: user);
+        },
+      ),
+    );
   }
 }

@@ -79,7 +79,6 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     }
                   }
-                  
                 },
                 child: Text(isCreatingAccount == true
                     ? 'Zarejestruj się'
