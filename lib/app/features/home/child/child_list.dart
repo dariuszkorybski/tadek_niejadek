@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadek_niejadek/app/features/details/page/details_page.dart';
 import 'package:tadek_niejadek/models/child_model.dart';
+import 'package:tadek_niejadek/repositories/child_repository.dart';
 
 import 'cubit/child_cubit.dart';
 
@@ -14,7 +15,7 @@ class ChildList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => ChildCubit()..start(),
+        create: (context) => ChildCubit(ChildRepository())..start(),
         child: BlocBuilder<ChildCubit, ChildState>(
           builder: (context, state) {
             final childModels = state.child;
@@ -85,6 +86,7 @@ class _ListViewChild extends StatelessWidget {
             child: Text(
               childModel.name,
               style: const TextStyle(
+                color: Colors.red,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),

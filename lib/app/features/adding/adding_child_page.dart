@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:tadek_niejadek/app/features/adding/cubit/adding_cubit.dart';
+import 'package:tadek_niejadek/app/features/home/child/child_list.dart';
+import 'package:tadek_niejadek/repositories/child_repository.dart';
 
 class AddingChildPage extends StatefulWidget {
   const AddingChildPage({
@@ -21,17 +24,21 @@ class _AddingChildPageState extends State<AddingChildPage> {
   String? _height;
   String? _weight;
   String? _gender;
-  String? _imageUrl;
+  String? _image;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => AddingCubit(),
+        create: (context) => AddingCubit(ChildRepository()),
         child: BlocListener<AddingCubit, AddingState>(
           listener: (context, state) {
             if (state.saved) {
-              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ChildList(),
+                ),
+              );
             }
             if (state.errorMessage.isNotEmpty) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -50,7 +57,11 @@ class _AddingChildPageState extends State<AddingChildPage> {
                   leading: BackButton(
                       color: Colors.red,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ChildList(),
+                          ),
+                        );
                       }),
                   actions: [
                     IconButton(
@@ -61,7 +72,7 @@ class _AddingChildPageState extends State<AddingChildPage> {
                               _height!,
                               _weight!,
                               _gender!,
-                              _imageUrl!,
+                              _image!,
                             );
                       },
                       icon: const Icon(Icons.add),
@@ -97,9 +108,9 @@ class _AddingChildPageState extends State<AddingChildPage> {
                       _gender = newValue;
                     });
                   },
-                  onImageUrlChanged: (newValue) {
+                  onImageChanged: (newValue) {
                     setState(() {
-                      _imageUrl = newValue;
+                      _image = newValue;
                     });
                   },
                 ),
@@ -119,18 +130,18 @@ class _AddChildBody extends StatelessWidget {
     required this.onDateChanged,
     this.selectedDateFormatted,
     required this.onHeightChanged,
-    required this.onWeightChanged,
     required this.onGenderChanged,
-    required this.onImageUrlChanged,
+    required this.onImageChanged,
+    required this.onWeightChanged,
   }) : super(key: key);
 
   final Function(String) onNameChanged;
   final Function(DateTime?) onDateChanged;
   final String? selectedDateFormatted;
-  final Function(String) onHeightChanged;
-  final Function(String) onWeightChanged;
+  final void Function(String) onHeightChanged;
+  final void Function(String) onWeightChanged;
   final Function(String) onGenderChanged;
-  final Function(String) onImageUrlChanged;
+  final Function(String) onImageChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -166,19 +177,27 @@ class _AddChildBody extends StatelessWidget {
               hintText: 'Podaj wzrost dziecka',
               label: Text('Wzrost [cm]'),
             ),
+            keyboardType: TextInputType.number,
+             inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly
+],
           ),
           const SizedBox(height: 10),
           TextField(
-            onChanged: onWeightChanged,
+            onChanged: onWeightChanged ,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Podaj wagę dziecka',
               label: Text('Waga [kg]'),
             ),
+            keyboardType: TextInputType.number,
+             inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly],
+            
           ),
           const SizedBox(height: 10),
           TextField(
-            onChanged: onImageUrlChanged,
+            onChanged: onImageChanged,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'http:// ... .jpg',

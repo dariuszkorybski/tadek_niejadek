@@ -23,57 +23,60 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text('Tadek niejadek'),
+        appBar: AppBar(
+          title: const Center(
+            child: Text('Tadek niejadek'),
+          ),
         ),
-      ),
-      body: Builder(builder: (context) {
-        if (currentIndex == 0) {
-          return const ChildList();
-        }
-        if (currentIndex == 1) {
-          return const UserProfile();
-        }
-        if (currentIndex == 2) {
-          return const GameFirstPage();
-        }
-        if (currentIndex == 3) {
-          return AddingChildPage(onSave: () {
-            setState(() {
-              currentIndex = 0;
+        body: Builder(builder: (context) {
+          if (currentIndex == 0) {
+            return const ChildList();
+          }
+          if (currentIndex == 1) {
+            return const UserProfile();
+          }
+          if (currentIndex == 2) {
+            return GameFirstPage(back: () {
+              setState(() {
+                currentIndex = 0;
+              });
             });
-          });
-        }
-        return const UserProfile();
-      }),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (newIndex) {
-          setState(() {
-            currentIndex = newIndex;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.child_friendly),
-            label: 'Dzieci',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Moje konto',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Zagraj w grę',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Dodaj dziecko',
-          ),
-        ],
-      ),
-    );
+          }
+          if (currentIndex == 3) {
+            return AddingChildPage(onSave: () {
+              setState(() {
+                currentIndex = 0;
+              });
+            });
+          }
+          return const UserProfile();
+        }),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (newIndex) {
+            setState(() {
+              currentIndex = newIndex;
+            });
+          },
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.child_friendly),
+              label: 'Dzieci',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Moje konto',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Zagraj w grę',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add),
+              label: 'Dodaj dziecko',
+            ),
+          ],
+        ));
   }
 }

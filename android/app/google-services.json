@@ -1,149 +1,34 @@
 {
   "project_info": {
-    "project_number": "231970697447",
-    "project_id": "nakarm-bobasa",
-    "storage_bucket": "nakarm-bobasa.appspot.com"
+    "project_number": "312301017702",
+    "project_id": "tadek-niejadek",
+    "storage_bucket": "tadek-niejadek.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:231970697447:android:ebf3ebd8b0809777a47242",
-        "android_client_info": {
-          "package_name": "com.dariuszkorybski.bobo_chce_jesc"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB_Fn0uju4Q-2_q-NOndKoYlXbXi_Xk-Q8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "231970697447-27petqfsdsa0qhui0ch8uaa38ca5fm4l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.dariuszkorybski.dzieckoJe"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:231970697447:android:cfc9aa68282d8817a47242",
+        "mobilesdk_app_id": "1:312301017702:android:0d38e64ce411b860ba6ba7",
         "android_client_info": {
           "package_name": "com.dariuszkorybski.tadek_niejadek"
         }
       },
       "oauth_client": [
         {
-          "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
+          "client_id": "312301017702-jeo2hp0vr596r3hupltht3cvj5joa5as.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB_Fn0uju4Q-2_q-NOndKoYlXbXi_Xk-Q8"
+          "current_key": "AIzaSyCz-hTKxpSx5pjjazr7Q-acMjgd2b6SGQk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
+              "client_id": "312301017702-jeo2hp0vr596r3hupltht3cvj5joa5as.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "231970697447-27petqfsdsa0qhui0ch8uaa38ca5fm4l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.dariuszkorybski.dzieckoJe"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:231970697447:android:5d66bbf977d53ab2a47242",
-        "android_client_info": {
-          "package_name": "com.dariuszkorybski.dziecko_je"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB_Fn0uju4Q-2_q-NOndKoYlXbXi_Xk-Q8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "231970697447-27petqfsdsa0qhui0ch8uaa38ca5fm4l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.dariuszkorybski.dzieckoJe"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:231970697447:android:6900f5759365fc36a47242",
-        "android_client_info": {
-          "package_name": "com.dariuszkorybski.tadek_niejadek"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB_Fn0uju4Q-2_q-NOndKoYlXbXi_Xk-Q8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "231970697447-lbi5nu5rmslsh01o81mud5eoe1scl29v.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "231970697447-27petqfsdsa0qhui0ch8uaa38ca5fm4l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.dariuszkorybski.dzieckoJe"
-              }
             }
           ]
         }

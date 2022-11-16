@@ -1,41 +1,28 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tadek_niejadek/models/child_model.dart';
+import 'package:tadek_niejadek/repositories/child_repository.dart';
 
 part 'child_state.dart';
 
 class ChildCubit extends Cubit<ChildState> {
-  ChildCubit() : super(const ChildState());
+  ChildCubit(this._childRepository) : super(const ChildState());
+
+  final ChildRepository _childRepository;
 
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
-    _streamSubscription =
-        FirebaseFirestore.instance.collection('child').snapshots().listen(
+    _streamSubscription = _childRepository.getChildStream().listen(
       (child) {
-        final childModels = child.docs.map((doc) {
-          return ChildModel(
-              id: doc.id,
-              name: doc['name'],
-              gender: doc['gender'],
-              height: doc['height'],
-              weight: doc['weight'],
-              imageUrl: doc['imageUrl'],
-              dateTime: doc['dateTime']);
-        }).toList();
-        emit(ChildState(child: childModels));
+        emit(ChildState(child: child));
       },
     );
   }
 
   Future<void> remove({required String documentID}) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('child')
-          .doc(documentID)
-          .delete();
+      await _childRepository.delete(id: documentID);
     } catch (error) {
       emit(
         const ChildState(removingErrorOccured: true),

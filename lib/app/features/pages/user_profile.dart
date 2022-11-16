@@ -4,9 +4,8 @@ import 'package:tadek_niejadek/app/cubit/auth_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({Key? key}) : super(key: key);
+  const UserProfile({Key? key,}) : super(key: key);
 
-  
 
   @override
   Widget build(BuildContext context) {
