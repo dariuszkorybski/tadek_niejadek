@@ -65,16 +65,23 @@ class _AddingChildPageState extends State<AddingChildPage> {
                       }),
                   actions: [
                     IconButton(
-                      onPressed: () {
-                        context.read<AddingCubit>().add(
-                              _name!,
-                              _dateTime!,
-                              _height!,
-                              _weight!,
-                              _gender!,
-                              _image!,
-                            );
-                      },
+                      onPressed: _name == null ||
+                              _dateTime == null ||
+                              _height == null ||
+                              _weight == null ||
+                              _gender == null ||
+                              _image == null
+                          ? null
+                          : () {
+                              context.read<AddingCubit>().add(
+                                    _name!,
+                                    _dateTime!,
+                                    _height!,
+                                    _weight!,
+                                    _gender!,
+                                    _image!,
+                                  );
+                            },
                       icon: const Icon(Icons.add),
                     ),
                   ],
@@ -178,22 +185,22 @@ class _AddChildBody extends StatelessWidget {
               label: Text('Wzrost [cm]'),
             ),
             keyboardType: TextInputType.number,
-             inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-],
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
           ),
           const SizedBox(height: 10),
           TextField(
-            onChanged: onWeightChanged ,
+            onChanged: onWeightChanged,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Podaj wagę dziecka',
               label: Text('Waga [kg]'),
             ),
             keyboardType: TextInputType.number,
-             inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly],
-            
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
           ),
           const SizedBox(height: 10),
           TextField(

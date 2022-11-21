@@ -1,6 +1,8 @@
 part of 'details_cubit.dart';
 
-@immutable
-abstract class DetailsState {}
+class DetailsState {
 
-class DetailsInitial extends DetailsState {}
+  DetailsState({required this.childModel});
+
+  final ChildModel? childModel;
+}

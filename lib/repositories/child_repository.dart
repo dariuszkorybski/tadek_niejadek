@@ -15,13 +15,27 @@ class ChildRepository {
             height: doc['height'],
             weight: doc['weight'],
             image: doc['image'],
-            dateTime: doc['dateTime']);
+            dateTime: (doc['dateTime'] as Timestamp).toDate());
       }).toList();
     });
   }
 
   Future<void> delete({required String id}) {
     return FirebaseFirestore.instance.collection('child').doc(id).delete();
+  }
+
+  Future<ChildModel> get({required String id}) async {
+    final doc =
+        await FirebaseFirestore.instance.collection('child').doc(id).get();
+    return ChildModel(
+      id: doc.id,
+      name: doc['name'],
+      gender: doc['gender'],
+      height: doc['height'],
+      weight: doc['weight'],
+      image: doc['image'],
+      dateTime: (doc['dateTime'] as Timestamp).toDate(),
+    );
   }
 
   Future<void> add(
@@ -32,15 +46,15 @@ class ChildRepository {
     String gender,
     String image,
   ) async {
-    
-      await FirebaseFirestore.instance.collection('child').add({
+    await FirebaseFirestore.instance.collection('child').add(
+      {
         'name': name,
         'dataTime': dateTime,
         'gender': gender,
         'height': height,
         'weight': weight,
         'image': image,
-      },);
-    
-}
+      },
+    );
   }
+}

@@ -8,60 +8,59 @@ import 'cubit/child_cubit.dart';
 
 class ChildList extends StatelessWidget {
   const ChildList({
-    Key? key,
+    Key? key, 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => ChildCubit(ChildRepository())..start(),
-        child: BlocBuilder<ChildCubit, ChildState>(
-          builder: (context, state) {
-            final childModels = state.child;
-            if (childModels.isEmpty) {
-              return const SizedBox.shrink();
-            }
-            return ListView(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20,
-              ),
-              children: [
-                for (final childModel in childModels)
-                  Dismissible(
-                    key: ValueKey(childModel),
-                    background: const DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 32.0),
-                          child: Icon(
-                            Icons.delete,
-                          ),
+        body: BlocProvider(
+      create: (context) => ChildCubit(ChildRepository())..start(),
+      child: BlocBuilder<ChildCubit, ChildState>(
+        builder: (context, state) {
+          final childModels = state.child;
+          if (childModels.isEmpty) {
+            return const SizedBox.shrink();
+          }
+          return ListView(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+            ),
+            children: [
+              for (final childModel in childModels)
+                Dismissible(
+                  key: ValueKey(childModel.id),
+                  background: const DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 32.0),
+                        child: Icon(
+                          Icons.delete,
                         ),
                       ),
                     ),
-                    confirmDismiss: (direction) async {
-                      return direction == DismissDirection.endToStart;
-                    },
-                    onDismissed: (direction) {
-                      context
-                          .read<ChildCubit>()
-                          .remove(documentID: childModel.id);
-                    },
-                    child: _ListViewChild(
-                      childModel: childModel,
-                    ),
                   ),
-              ],
-            );
-          },
-        ),
+                  confirmDismiss: (direction) async {
+                    return direction == DismissDirection.endToStart;
+                  },
+                  onDismissed: (direction) {
+                    context
+                        .read<ChildCubit>()
+                        .remove(documentID: childModel.id);
+                  },
+                  child: _ListViewChild(
+                    childModel: childModel,
+                  ),
+                ),
+            ],
+          );
+        },
       ),
-    );
+    ));
   }
 }
 

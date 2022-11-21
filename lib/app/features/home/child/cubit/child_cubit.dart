@@ -17,6 +17,9 @@ class ChildCubit extends Cubit<ChildState> {
       (child) {
         emit(ChildState(child: child));
       },
+    )..onError((error) {
+      emit (const ChildState(loadingErrorOccured: true));
+    },
     );
   }
 

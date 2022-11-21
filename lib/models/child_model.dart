@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class ChildModel {
   ChildModel({
     required this.id,
@@ -16,4 +18,8 @@ class ChildModel {
   final double weight;
   final String image;
   final DateTime dateTime;
+
+  String selectedDateFormatted() {
+    return DateFormat.MMMEd().format(dateTime);
+  }
 }
