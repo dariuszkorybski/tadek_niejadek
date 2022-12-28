@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadek_niejadek/app/features/details/cubit/details_cubit.dart';
-import 'package:tadek_niejadek/models/child_model.dart';
-import 'package:tadek_niejadek/repositories/child_repository.dart';
+import 'package:tadek_niejadek/features/details/cubit/details_cubit.dart';
+
+import 'package:tadek_niejadek/models/item_model.dart';
+import 'package:tadek_niejadek/repositories/items_repository.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({
@@ -19,12 +20,11 @@ class DetailsPage extends StatelessWidget {
         title: const Text('Can\'t Wait 🤩'),
       ),
       body: BlocProvider(
-        create: (context) =>
-            DetailsCubit(ChildRepository())..getChildWithID(id),
+        create: (context) => DetailsCubit(ItemsRepository())..getItemWithID(id),
         child: BlocBuilder<DetailsCubit, DetailsState>(
           builder: (context, state) {
-            final childModel = state.childModel;
-            if (childModel == null) {
+            final itemModel = state.itemModel;
+            if (itemModel == null) {
               return const CircularProgressIndicator();
             }
             return ListView(
@@ -32,8 +32,8 @@ class DetailsPage extends StatelessWidget {
                 vertical: 20,
               ),
               children: [
-                _ListViewChild(
-                  childModel: childModel,
+                _ListViewchild(
+                  itemModel: itemModel,
                 ),
               ],
             );
@@ -44,13 +44,13 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
-class _ListViewChild extends StatelessWidget {
-  const _ListViewChild({
+class _ListViewchild extends StatelessWidget {
+  const _ListViewchild({
     Key? key,
-    required this.childModel,
+    required this.itemModel,
   }) : super(key: key);
 
-  final ChildModel childModel;
+  final ItemModel itemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _ListViewChild extends StatelessWidget {
               color: Colors.black12,
               image: DecorationImage(
                 image: NetworkImage(
-                  childModel.name,
+                  itemModel.name,
                 ),
                 fit: BoxFit.cover,
               ),
@@ -86,7 +86,7 @@ class _ListViewChild extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        childModel.gender,
+                        itemModel.selectedDateFormatted(),
                         style: const TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _ListViewChild extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        childModel.height.toString(),
+                        itemModel.height.toString(),
                       ),
                     ],
                   ),
@@ -109,13 +109,13 @@ class _ListViewChild extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      childModel.weight.toString(),
+                      itemModel.weight.toString(),
                       style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Text('weight'),
+                    const Text('Wiek'),
                   ],
                 ),
               ),

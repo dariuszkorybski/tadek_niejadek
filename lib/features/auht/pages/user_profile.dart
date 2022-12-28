@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadek_niejadek/app/cubit/auth_cubit.dart';
-import 'package:image_picker/image_picker.dart';
+
+import 'package:tadek_niejadek/features/auht/cubit/auth_cubit.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({Key? key,}) : super(key: key);
-
+  const UserProfile({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,6 @@ class UserProfile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const TextField(),
             ElevatedButton(
               onPressed: () {
                 context.read<AuthCubit>().signOut();

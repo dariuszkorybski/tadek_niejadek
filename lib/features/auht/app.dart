@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadek_niejadek/app/cubit/auth_cubit.dart';
-import 'package:tadek_niejadek/app/features/home/home_page.dart';
-import 'package:tadek_niejadek/app/features/login/auth_gate.dart';
+import 'package:tadek_niejadek/features/auht/cubit/auth_cubit.dart';
+import 'package:tadek_niejadek/features/auht/pages/auth_gate.dart';
+import 'package:tadek_niejadek/features/home/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class AuthGate extends StatelessWidget {
           if (user == null) {
             return LoginPage();
           }
-          return  HomePage(user: user);
+          return HomePage(user: user);
         },
       ),
     );

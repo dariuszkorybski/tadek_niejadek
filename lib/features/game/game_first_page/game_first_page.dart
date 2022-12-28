@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tadek_niejadek/app/features/game/game_second_page/game_second_page.dart';
-import 'package:tadek_niejadek/app/features/home/child/child_list.dart';
+
+import 'package:tadek_niejadek/features/game/game_second_page/game_second_page.dart';
 
 class GameFirstPage extends StatelessWidget {
   const GameFirstPage({
     Key? key,
-    required this.back,
   }) : super(key: key);
-
-  final Function back;
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +40,9 @@ class GameFirstPage extends StatelessWidget {
               height: 200,
             ),
             ElevatedButton(
-                child: const Text('Powrót do listy'),
+                child: const Text('Powrót do menu'),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const ChildList(),
-                  ));
+                  Navigator.of(context).pop();
                 })
           ],
         ),

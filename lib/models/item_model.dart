@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
-class ChildModel {
-  ChildModel({
+class ItemModel {
+  ItemModel({
     required this.id,
     required this.name,
     required this.gender,
@@ -14,12 +14,12 @@ class ChildModel {
   final String id;
   final String name;
   final String gender;
-  final double height;
-  final double weight;
+  final String height;
+  final String weight;
   final String image;
   final DateTime dateTime;
 
   String selectedDateFormatted() {
-    return DateFormat.MMMEd().format(dateTime);
+    return DateFormat.yMMMEd().format(dateTime);
   }
 }

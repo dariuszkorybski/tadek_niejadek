@@ -1,15 +1,17 @@
+import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadek_niejadek/repositories/child_repository.dart';
+import 'package:tadek_niejadek/repositories/items_repository.dart';
+
 
 part 'adding_state.dart';
 
 class AddingCubit extends Cubit<AddingState> {
-  AddingCubit(this._childRepository)
+  AddingCubit(this._itemsRepository)
       : super(
           const AddingState(),
         );
 
-  final ChildRepository _childRepository;
+  final ItemsRepository _itemsRepository;
 
   Future<void> add(
     String name,
@@ -20,7 +22,7 @@ class AddingCubit extends Cubit<AddingState> {
     String image,
   ) async {
     try {
-      await _childRepository.add(
+      await _itemsRepository.add(
         name,
         dateTime,
         gender,
