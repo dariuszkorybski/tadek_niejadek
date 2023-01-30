@@ -20,8 +20,6 @@ class ItemsRepository {
             id: doc.id,
             name: doc['name'],
             gender: doc['gender'],
-            height: doc['height'],
-            weight: doc['weight'],
             image: doc['image'],
             dateTime: (doc['dateTime'] as Timestamp).toDate());
       }).toList();
@@ -56,8 +54,6 @@ class ItemsRepository {
       id: doc.id,
       name: doc['name'],
       gender: doc['gender'],
-      height: doc['height'],
-      weight: doc['weight'],
       image: doc['image'],
       dateTime: (doc['dateTime'] as Timestamp).toDate(),
     );
@@ -65,11 +61,10 @@ class ItemsRepository {
 
   Future<void> add(
     String name,
-    DateTime dateTime,
-    String height,
-    String weight,
     String gender,
     String image,
+    DateTime dateTime,
+    
   ) async {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
@@ -84,8 +79,7 @@ class ItemsRepository {
         'name': name,
         'dataTime': dateTime,
         'gender': gender,
-        'height': height,
-        'weight': weight,
+  
         'image': image,
       },
     );

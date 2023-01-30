@@ -1,7 +1,7 @@
-part of 'adding_cubit.dart';
+part of 'add_cubit.dart';
 
-class AddingState {
-  const AddingState({
+class AddState {
+  const AddState({
     this.saved = false,
     this.errorMessage = '',
   });

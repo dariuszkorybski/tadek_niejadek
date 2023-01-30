@@ -5,8 +5,6 @@ class ItemModel {
     required this.id,
     required this.name,
     required this.gender,
-    required this.height,
-    required this.weight,
     required this.image,
     required this.dateTime,
   });
@@ -14,8 +12,6 @@ class ItemModel {
   final String id;
   final String name;
   final String gender;
-  final String height;
-  final String weight;
   final String image;
   final DateTime dateTime;
 

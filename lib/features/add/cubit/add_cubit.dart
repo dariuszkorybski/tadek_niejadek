@@ -3,36 +3,32 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadek_niejadek/repositories/items_repository.dart';
 
 
-part 'adding_state.dart';
+part 'add_state.dart';
 
-class AddingCubit extends Cubit<AddingState> {
-  AddingCubit(this._itemsRepository)
+class AddCubit extends Cubit<AddState> {
+  AddCubit(this._itemsRepository)
       : super(
-          const AddingState(),
+          const AddState(),
         );
 
   final ItemsRepository _itemsRepository;
 
   Future<void> add(
     String name,
-    DateTime dateTime,
-    String height,
-    String weight,
     String gender,
     String image,
+    DateTime dateTime,
   ) async {
     try {
       await _itemsRepository.add(
         name,
-        dateTime,
         gender,
-        height,
-        weight,
         image,
+        dateTime,
       );
-      emit(const AddingState(saved: true));
+      emit(const AddState(saved: true));
     } catch (error) {
-      emit(AddingState(errorMessage: error.toString()));
+      emit(AddState(errorMessage: error.toString()));
     }
   }
 }

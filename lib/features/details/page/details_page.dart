@@ -17,7 +17,7 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Can\'t Wait 🤩'),
+        title: const Text('Tadek Niejadek'),
       ),
       body: BlocProvider(
         create: (context) => DetailsCubit(ItemsRepository())..getItemWithID(id),
@@ -32,7 +32,7 @@ class DetailsPage extends StatelessWidget {
                 vertical: 20,
               ),
               children: [
-                _ListViewchild(
+                _ListViewItem(
                   itemModel: itemModel,
                 ),
               ],
@@ -44,8 +44,8 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
-class _ListViewchild extends StatelessWidget {
-  const _ListViewchild({
+class _ListViewItem extends StatelessWidget {
+  const _ListViewItem({
     Key? key,
     required this.itemModel,
   }) : super(key: key);
@@ -70,7 +70,7 @@ class _ListViewchild extends StatelessWidget {
               color: Colors.black12,
               image: DecorationImage(
                 image: NetworkImage(
-                  itemModel.name,
+                  itemModel.image,
                 ),
                 fit: BoxFit.cover,
               ),
@@ -86,7 +86,7 @@ class _ListViewchild extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        itemModel.selectedDateFormatted(),
+                        itemModel.name,
                         style: const TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _ListViewchild extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        itemModel.height.toString(),
+                        itemModel.selectedDateFormatted(),
                       ),
                     ],
                   ),
@@ -109,7 +109,7 @@ class _ListViewchild extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      itemModel.weight.toString(),
+                      itemModel.gender,
                       style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,

@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:tadek_niejadek/features/adding/cubit/adding_cubit.dart';
-
+import 'package:tadek_niejadek/features/add/cubit/add_cubit.dart';
 import 'package:tadek_niejadek/repositories/items_repository.dart';
 
-class AddingChildPage extends StatefulWidget {
-  const AddingChildPage({
+class AddPage extends StatefulWidget {
+  const AddPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<AddingChildPage> createState() => _AddingChildPageState();
+  State<AddPage> createState() => _AddPageState();
 }
 
-class _AddingChildPageState extends State<AddingChildPage> {
+class _AddPageState extends State<AddPage> {
   String? _name;
-  DateTime? _dateTime;
-  String? _height;
-  String? _weight;
   String? _gender;
   String? _image;
+  DateTime? _dateTime;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddingCubit(ItemsRepository()),
-      child: BlocListener<AddingCubit, AddingState>(
+      create: (context) => AddCubit(ItemsRepository()),
+      child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
           if (state.saved) {
             Navigator.of(context).pop();
@@ -41,7 +37,7 @@ class _AddingChildPageState extends State<AddingChildPage> {
             );
           }
         },
-        child: BlocBuilder<AddingCubit, AddingState>(
+        child: BlocBuilder<AddCubit, AddState>(
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
@@ -54,47 +50,26 @@ class _AddingChildPageState extends State<AddingChildPage> {
                 actions: [
                   IconButton(
                     onPressed: _name == null ||
-                            _dateTime == null ||
-                            _height == null ||
-                            _weight == null ||
-                            _gender == null
+                            _gender == null ||
+                            _image == null ||
+                            _dateTime == null
                         ? null
                         : () {
-                            context.read<AddingCubit>().add(
+                            context.read<AddCubit>().add(
                                   _name!,
-                                  _dateTime!,
-                                  _height!,
-                                  _weight!,
                                   _gender!,
                                   _image!,
+                                  _dateTime!,
                                 );
                           },
                     icon: const Icon(Icons.check),
                   ),
                 ],
               ),
-              body: _AddChildBody(
+              body: _AddPageBody(
                 onNameChanged: (newValue) {
                   setState(() {
                     _name = newValue;
-                  });
-                },
-                onDateChanged: (newValue) {
-                  setState(() {
-                    _dateTime = newValue;
-                  });
-                },
-                selectedDateFormatted: _dateTime == null
-                    ? null
-                    : DateFormat.MMMEd().format(_dateTime!),
-                onHeightChanged: (newValue) {
-                  setState(() {
-                    _height = newValue;
-                  });
-                },
-                onWeightChanged: (newValue) {
-                  setState(() {
-                    _weight = newValue;
                   });
                 },
                 onGenderChanged: (newValue) {
@@ -107,6 +82,14 @@ class _AddingChildPageState extends State<AddingChildPage> {
                     _image = newValue;
                   });
                 },
+                onDateChanged: (newValue) {
+                  setState(() {
+                    _dateTime = newValue;
+                  });
+                },
+                selectedDateFormatted: _dateTime == null
+                    ? null
+                    : DateFormat.MMMEd().format(_dateTime!),
               ),
             );
           },
@@ -116,21 +99,17 @@ class _AddingChildPageState extends State<AddingChildPage> {
   }
 }
 
-class _AddChildBody extends StatelessWidget {
-  const _AddChildBody({
+class _AddPageBody extends StatelessWidget {
+  const _AddPageBody({
     Key? key,
     required this.onNameChanged,
-    required this.onHeightChanged,
     required this.onGenderChanged,
     required this.onImageChanged,
-    required this.onWeightChanged,
     required this.onDateChanged,
     this.selectedDateFormatted,
   }) : super(key: key);
 
   final Function(String) onNameChanged;
-  final Function(String) onHeightChanged;
-  final Function(String) onWeightChanged;
   final Function(String) onGenderChanged;
   final Function(String) onImageChanged;
   final Function(DateTime?) onDateChanged;
@@ -160,32 +139,6 @@ class _AddChildBody extends StatelessWidget {
             hintText: 'Kobieta/Męzczyzna [K/M]',
             label: Text('Płeć'),
           ),
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          onChanged: onHeightChanged,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Podaj wzrost dziecka',
-            label: Text('Wzrost [cm]'),
-          ),
-          keyboardType: TextInputType.number,
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ],
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          onChanged: onWeightChanged,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Podaj wagę dziecka',
-            label: Text('Waga [kg]'),
-          ),
-          keyboardType: TextInputType.number,
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ],
         ),
         const SizedBox(height: 10),
         TextField(

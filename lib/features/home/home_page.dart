@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadek_niejadek/features/adding/adding_child_page.dart';
-import 'package:tadek_niejadek/features/auht/pages/user_profile.dart';
+import 'package:tadek_niejadek/features/add/add_page.dart';
+import 'package:tadek_niejadek/features/auht/pages/profile_screen.dart';
+
 import 'package:tadek_niejadek/features/details/page/details_page.dart';
 import 'package:tadek_niejadek/features/game/game_first_page/game_first_page.dart';
 import 'package:tadek_niejadek/features/home/cubit/home_cubit.dart';
@@ -12,10 +12,7 @@ import 'package:tadek_niejadek/repositories/items_repository.dart';
 class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
-    required this.user,
   }) : super(key: key);
-
-  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +39,12 @@ class HomePage extends StatelessWidget {
           icon: const Icon(Icons.gamepad),
         ),
       ]),
-      body: const _ChildListBody(),
+      body: const _HomePageBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const AddingChildPage(),
+              builder: (context) => const AddPage(),
               fullscreenDialog: true,
             ),
           );
@@ -58,8 +55,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _ChildListBody extends StatelessWidget {
-  const _ChildListBody({
+class _HomePageBody extends StatelessWidget {
+  const _HomePageBody({
     Key? key,
   }) : super(key: key);
 
@@ -98,7 +95,7 @@ class _ChildListBody extends StatelessWidget {
                   onDismissed: (direction) {
                     context.read<HomeCubit>().remove(documentID: itemModel.id);
                   },
-                  child: _ListViewChild(
+                  child: _ListViewItem(
                     itemModel: itemModel,
                   ),
                 ),
@@ -110,8 +107,8 @@ class _ChildListBody extends StatelessWidget {
   }
 }
 
-class _ListViewChild extends StatelessWidget {
-  const _ListViewChild({
+class _ListViewItem extends StatelessWidget {
+  const _ListViewItem({
     Key? key,
     required this.itemModel,
   }) : super(key: key);
@@ -140,14 +137,16 @@ class _ListViewChild extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                child: Center(
-                    child: Text(
-                  itemModel.name,
-                  style: const TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      itemModel.image,
+                    ),
+                    fit: BoxFit.cover,
                   ),
-                )),
+                ),
               ),
               Row(
                 children: [
@@ -159,7 +158,7 @@ class _ListViewChild extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            itemModel.weight,
+                            itemModel.name,
                             style: const TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -167,7 +166,7 @@ class _ListViewChild extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            itemModel.height,
+                            itemModel.selectedDateFormatted(),
                           ),
                         ],
                       ),

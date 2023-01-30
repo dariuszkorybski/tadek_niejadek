@@ -1,8 +1,5 @@
 part of 'home_cubit.dart';
 
-
-
-
 class HomeState {
   const HomeState({
     this.items = const [],
