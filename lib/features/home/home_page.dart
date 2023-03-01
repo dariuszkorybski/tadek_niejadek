@@ -141,7 +141,7 @@ class _ListViewItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.black12,
                   image: DecorationImage(
-                    image: NetworkImage(
+                    image: AssetImage(
                       itemModel.image,
                     ),
                     fit: BoxFit.cover,
@@ -167,6 +167,10 @@ class _ListViewItem extends StatelessWidget {
                           const SizedBox(height: 10),
                           Text(
                             itemModel.selectedDateFormatted(),
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -181,13 +185,19 @@ class _ListViewItem extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          itemModel.gender,
+                          (itemModel.myAge().abs().toStringAsFixed(0)),
                           style: const TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text('days left'),
+                        const Text(
+                          'miesięcy',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -109,7 +109,7 @@ class _ListViewItem extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      itemModel.gender,
+                      itemModel.gender.toString(),
                       style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,

@@ -167,4 +167,6 @@ class _AddPageBody extends StatelessWidget {
       ],
     );
   }
+
+  setState(Function() param0) {}
 }

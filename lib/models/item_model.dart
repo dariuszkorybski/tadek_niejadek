@@ -15,6 +15,10 @@ class ItemModel {
   final String image;
   final DateTime dateTime;
 
+  double myAge() {
+    return dateTime.difference(DateTime.now()).inDays / 30;
+  }
+
   String selectedDateFormatted() {
     return DateFormat.yMMMEd().format(dateTime);
   }

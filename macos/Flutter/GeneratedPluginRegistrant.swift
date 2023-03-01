@@ -10,7 +10,7 @@ import desktop_webview_auth
 import firebase_auth
 import firebase_core
 import firebase_database
-import path_provider_macos
+import path_provider_foundation
 import sign_in_with_apple
 import twitter_login
 

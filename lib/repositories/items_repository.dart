@@ -64,7 +64,6 @@ class ItemsRepository {
     String gender,
     String image,
     DateTime dateTime,
-    
   ) async {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
@@ -77,9 +76,8 @@ class ItemsRepository {
         .add(
       {
         'name': name,
-        'dataTime': dateTime,
+        'dateTime': dateTime,
         'gender': gender,
-  
         'image': image,
       },
     );
